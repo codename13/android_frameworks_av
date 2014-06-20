@@ -725,6 +725,11 @@ public:
     static const char OBJECT_TRACKING_OFF[];
 #endif
 
+#ifdef ZTE_CAMERA_HARDWARE
+    static const char KEY_SHUTTER_SOUND_SELECT[];
+    static const char KEY_SHUTTER_SOUND[];
+#endif
+
     static const char KEY_AE_BRACKET_HDR[];
 
     // Value for KEY_ZOOM_SUPPORTED or KEY_SMOOTH_ZOOM_SUPPORTED.
@@ -968,17 +973,19 @@ public:
 
     static const char KEY_SHARPNESS[];
     static const char KEY_MAX_SHARPNESS[];
-
-#if defined(SAMSUNG_CAMERA_LEGACY) || defined(QCOM_LEGACY_CAM_PARAMS)
+#ifdef QCOM_LEGACY_CAM_PARAMS
     static const char KEY_MIN_SHARPNESS[];
-    static const char KEY_MIN_CONTRAST[];
-    static const char KEY_MIN_SATURATION[];
 #endif
     static const char KEY_CONTRAST[];
     static const char KEY_MAX_CONTRAST[];
-
+#ifdef QCOM_LEGACY_CAM_PARAMS
+    static const char KEY_MIN_CONTRAST[];
+#endif
     static const char KEY_SATURATION[];
     static const char KEY_MAX_SATURATION[];
+#ifdef QCOM_LEGACY_CAM_PARAMS
+    static const char KEY_MIN_SATURATION[];
+#endif
 
     static const char KEY_HISTOGRAM[] ;
     static const char KEY_SUPPORTED_HISTOGRAM_MODES[] ;
@@ -1038,7 +1045,7 @@ public:
     static const char HDR_ENABLE[];
     static const char HDR_DISABLE[];
 
-#if defined(QCOM_HARDWARE) || defined(SAMSUNG_CAMERA_LEGACY)
+#if defined(QCOM_HARDWARE) && defined(SAMSUNG_CAMERA_LEGACY)
     static const char FOCUS_MODE_FACEDETECT[];
     static const char FOCUS_MODE_TOUCHAF[];
     static const char ISO_50[];
@@ -1057,6 +1064,7 @@ public:
     static const char SCENE_MODE_DUSKDAWN[];
     static const char SCENE_MODE_FALL[];
     static const char SCENE_MODE_FALL_COLOR[];
+    static const char SCENE_MODE_OFF[];
     static const char SCENE_MODE_TEXT[];
 #endif
 
